@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import MapGL, {GeolocateControl} from 'react-map-gl';
+import './map.css'
 
 const MAPBOX_TOKEN = 'pk.eyJ1IjoiYmFybmVzMjE5NyIsImEiOiJjanhoNWJwemQwYzNyM3lxdGttZmN5d212In0.RyLKAA5P-J9TFaVkbP4e8w'; // Set your mapbox token here
 
 const geolocateStyle = {
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  margin: 10
+  position: 'fixed',
+  right: 0,
+  bottom: 0
 };
 class Map extends Component{
 
@@ -27,20 +27,22 @@ class Map extends Component{
         const {viewport} = this.state;
     
         return (
-          <MapGL
+            
+          <MapGL 
             {...viewport}
-            width="100%"
-            height="100%"
+            width="75%"
+            height="75%"
             mapStyle="mapbox://styles/mapbox/dark-v9"
             onViewportChange={this._onViewportChange}
             mapboxApiAccessToken={MAPBOX_TOKEN}
           >
-            <GeolocateControl
+            <GeolocateControl 
               style={geolocateStyle}
               positionOptions={{enableHighAccuracy: true}}
               trackUserLocation={true}
             />
           </MapGL>
+         
         );
       }
     
